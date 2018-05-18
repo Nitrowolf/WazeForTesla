@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-105.562887,50.425709]}, "properties": { "type": 4, "address":"HWY-1"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-105.554802,50.426017]}, "properties": { "type": 4, "address":"903 N Service Rd"}}]}

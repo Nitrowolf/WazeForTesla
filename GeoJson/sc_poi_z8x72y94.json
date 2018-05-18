@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-78.696128,42.968673]}, "properties": { "name": "Buffalo, NY", "dateOpened": "2015-06-11", "elevationMeters": "213", "locationId": "buffalosupercharger", "stallCount": "8"}}]}

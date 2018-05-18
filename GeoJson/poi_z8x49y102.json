@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-110.765485,33.392241]}, "properties": { "type": 1, "address":"US Hwy 60 / E Ash St"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-111.615429,33.398747]}, "properties": { "type": 4, "address":"S Crismon Rd"}}]}

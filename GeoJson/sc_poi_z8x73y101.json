@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-76.756116,35.850587]}, "properties": { "name": "Plymouth, NC", "dateOpened": "2014-03-12", "elevationMeters": "5", "locationId": "plymouthsupercharger", "stallCount": "8"}}]}

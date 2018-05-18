@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-83.6255567,32.8334275]}, "properties": { "name": "Macon, GA", "dateOpened": "2014-05-08", "elevationMeters": "98", "locationId": "macongasupercharger", "stallCount": "8"}}]}

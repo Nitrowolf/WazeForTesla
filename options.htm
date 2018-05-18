@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Options</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style TYPE="text/css"> 
+        <!-- 
+        body { 
+            font-family:Montserrat; 
+            font-size:19px;
+            color:#808080;
+        } 
+        -->
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBayhW5BTwRlcRhcaPa_85NCPy_Soyi3NA"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+<body style="margin-top:5px">
+    <script type="text/javascript">
+        var displayMode = 0;
+        var trafficMode = 0;
+        var trafficJamMode = 0;
+        var zoom = 3;  // 10-18
+        var alertAccident = true;
+        var alertHazzard = true;
+        var alertClosed = true;
+        var alertConstruction = true;
+        var alertPolice = true;
+        var alertPoliceHiding = true;
+        var warnRedlightCamera = true;
+        var warnSpeedCamera = true;
+        var cameraType;
+
+        var gMap;
+        var carPosition;
+        var marker;
+        var cameraPOI;  
+        var urlParams;
+        var isNightMode = false;
+        var teslaButtonSelected = "teslaButton teslaButtonSelected";
+        // preload icons here
+
+        // parse url query parms
+        var match,
+            pl = /\+/g,  // Regex for replacing addition symbol with a space
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+            query = window.location.search.substring(1);
+
+        urlParams = {};
+        while (match = search.exec(query)) {
+            urlParams[decode(match[1])] = decode(match[2]);
+        }
+
+        if (urlParams["maptype"] == "map_night") {
+            isNightMode = true;
+        }
+
+        displayMode = parseInt(urlParams["display_mode"]);
+        trafficMode = parseInt(urlParams["traffic"]);
+        trafficJamMode = parseInt(urlParams["trafficJam"]);
+        zoom = parseInt(urlParams["zoom"]);
+        alertAccident = parseInt(urlParams["showAccidents"]);
+        alertHazzard = parseInt(urlParams["showHazzards"]);
+        alertClosed = parseInt(urlParams["showClosures"]);
+        alertConstruction = parseInt(urlParams["showConstruction"]);
+        alertPolice = parseInt(urlParams["showPolice"]);
+        alertPoliceHiding = parseInt(urlParams["showPoliceHiding"]);
+        warnRedlightCamera = parseInt(urlParams["redlightCamera"]);
+        warnSpeedCamera = parseInt(urlParams["speedCamera"]);
+        carPosition = new google.maps.LatLng(parseFloat(urlParams["lat"]), parseFloat(urlParams["lng"]));
+        //carPosition = new google.maps.LatLng(47.752856, -122.278275);
+        cameraPOI = urlParams["cameraPOI"];
+
+
+        function MarkerPositionChanged() {
+            console.log('new marker position');
+            //
+            carPosition = marker.position;
+            document.getElementById("reportLocation").innerText = carPosition.lat().toFixed(5) + ", " + carPosition.lng().toFixed(5);
+
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({ 'location': carPosition }, function (results, status) {
+                if (status === 'OK') {
+                    var routeIdx = -1;
+                    var localityIdx = -1;
+                    var stateIdx = -1;
+                    var formatedAddress = "";
+                    var resultsLength = results.length;
+                    for (var i = 0; i < resultsLength; i++) {
+                        var streetAddressIdx = results[0].types.indexOf("street_address");
+                        if (streetAddressIdx != -1) {
+                            var streetAddress = results[streetAddressIdx].address_components;
+                            var addressLength = streetAddress.length;
+                            for (var j = 0; j < addressLength; j++) {
+                                idx = streetAddress[j].types.indexOf("route");
+                                if (idx != -1) {
+                                    routeIdx = j;
+                                }
+                                idx = streetAddress[j].types.indexOf("locality");
+                                if (idx != -1) {
+                                    localityIdx = j;
+                                }
+                                idx = streetAddress[j].types.indexOf("administrative_area_level_1");
+                                if (idx != -1) {
+                                    stateIdx = j;
+                                }
+                            }
+
+                            if (routeIdx == -1 || localityIdx == -1 || stateIdx == -1) {
+                                formatedAddress = results[streetAddressIdx].formatted_address;
+                            } else {
+                                formatedAddress = streetAddress[routeIdx].long_name + ", " + streetAddress[localityIdx].long_name + ", " + streetAddress[stateIdx].short_name;
+                            }
+                            break;
+                        }
+                    }
+
+                    document.getElementById("reportAddress").innerText = formatedAddress;
+                } 
+            });
+
+        }
+
+        function SetDisplayMode(newMode) {
+            displayMode = newMode;
+            if (displayMode == 0) {
+                document.getElementById("DisplayAutoDiv").className = teslaButtonSelected;
+                document.getElementById("DisplayDayDiv").className = "teslaButton";
+                document.getElementById("DisplayNightDiv").className = "teslaButton";
+                document.getElementById("DisplayAutoImg").src = "icons/sunmoon_w.png";
+                document.getElementById("DisplayDayImg").src = "icons/sun_g.png";
+                document.getElementById("DisplayNightImg").src = "icons/moon_g.png";
+
+                if (isNightMode) {
+                    document.getElementById("DisplayDayImg").src = "icons/sun_w.png";
+                    document.getElementById("DisplayNightImg").src = "icons/moon_w.png";
+                } else {
+                    document.getElementById("DisplayDayImg").src = "icons/sun_g.png";
+                    document.getElementById("DisplayNightImg").src = "icons/moon_g.png";
+                }
+
+            } else if (displayMode == 1) {
+                document.getElementById("DisplayAutoDiv").className = "teslaButton";
+                document.getElementById("DisplayDayDiv").className = teslaButtonSelected;
+                document.getElementById("DisplayNightDiv").className = "teslaButton";
+                document.getElementById("DisplayDayImg").src = "icons/sun_w.png";
+
+                if (isNightMode) {
+                    document.getElementById("DisplayNightImg").src = "icons/moon_w.png";
+                    document.getElementById("DisplayAutoImg").src = "icons/sunmoon_w.png";
+                } else {
+                    document.getElementById("DisplayNightImg").src = "icons/moon_g.png";
+                    document.getElementById("DisplayAutoImg").src = "icons/sunmoon_g.png";
+                }
+
+            } else if (displayMode == 2) {
+                document.getElementById("DisplayAutoDiv").className = "teslaButton";
+                document.getElementById("DisplayDayDiv").className = "teslaButton";
+                document.getElementById("DisplayNightDiv").className = teslaButtonSelected;
+                document.getElementById("DisplayNightImg").src = "icons/moon_w.png";
+
+                if (isNightMode) {
+                    document.getElementById("DisplayAutoImg").src = "icons/sunmoon_w.png";
+                    document.getElementById("DisplayDayImg").src = "icons/sun_w.png";
+                } else {
+                    document.getElementById("DisplayAutoImg").src = "icons/sunmoon_g.png";
+                    document.getElementById("DisplayDayImg").src = "icons/sun_g.png";
+                }
+            }
+        }
+
+        function SetTrafficMode(newMode) {
+            trafficMode = newMode;
+            if (trafficMode == 0) {
+                document.getElementById("TrafficOffDiv").className = teslaButtonSelected;
+                document.getElementById("TrafficOnDiv").className = "teslaButton";
+            } else if (trafficMode == 1) {
+                document.getElementById("TrafficOffDiv").className = "teslaButton";
+                document.getElementById("TrafficOnDiv").className = teslaButtonSelected;
+            }
+        }
+
+        function SetTrafficJamMode(newMode) {
+            trafficJamMode = newMode;
+            if (trafficJamMode == 0) {
+                document.getElementById("TrafficJamOffDiv").className = teslaButtonSelected;
+                document.getElementById("TrafficJamOnDiv").className = "teslaButton";
+            } else if (trafficJamMode == 1) {
+                document.getElementById("TrafficJamOffDiv").className = "teslaButton";
+                document.getElementById("TrafficJamOnDiv").className = teslaButtonSelected;
+            }
+        }
+
+        function SetRedlightWarn(newMode) {
+            warnRedlightCamera = newMode;
+            if (warnRedlightCamera == 0) {
+                document.getElementById("RedlightWarnOffDiv").className = teslaButtonSelected;
+                document.getElementById("RedlightWarnOnDiv").className = "teslaButton";
+            } else if (warnRedlightCamera == 1) {
+                document.getElementById("RedlightWarnOffDiv").className = "teslaButton";
+                document.getElementById("RedlightWarnOnDiv").className = teslaButtonSelected;
+            }
+        }
+
+        function SpeedWarnMode(newMode) {
+            warnSpeedCamera = newMode;
+            if (warnSpeedCamera == 0) {
+                document.getElementById("SpeedWarnOffDiv").className = teslaButtonSelected;
+                document.getElementById("SpeedWarnOnDiv").className = "teslaButton";
+            } else if (warnSpeedCamera == 1) {
+                document.getElementById("SpeedWarnOffDiv").className = "teslaButton";
+                document.getElementById("SpeedWarnOnDiv").className = teslaButtonSelected;
+            }
+        }
+
+        function SetZoom(newZoom) {
+            zoom = newZoom;
+            var i;
+            for (i = 0; i <= 8; i++) {
+                if (zoom == i) {
+                    document.getElementById("ZoomDiv" + i).className = teslaButtonSelected + " teslaZoomButton";
+                } else {
+                    document.getElementById("ZoomDiv" + i).className = "teslaButton teslaZoomButton";
+                }
+            }
+        }
+
+        function SetAlertButton(id, buttonState) {
+            var element = document.getElementById(id + "Div");
+            if (buttonState == true) {
+                if (element != null) document.getElementById(id + "Div").className = teslaButtonSelected;
+                document.getElementById(id + "OffDiv").className = "teslaButton";
+                document.getElementById(id + "OnDiv").className = teslaButtonSelected;
+            } else {
+                if (element != null) document.getElementById(id + "Div").className = "teslaButton";
+                document.getElementById(id + "OffDiv").className = teslaButtonSelected;
+                document.getElementById(id + "OnDiv").className = "teslaButton";
+            }
+        }
+        
+        function SetCameraType(newMode) {
+            cameraType = newMode;
+            if (cameraType == 0) {
+                document.getElementById("typeRedlight").className = teslaButtonSelected;
+                document.getElementById("typeSpeed").className = "teslaButton";
+                document.getElementById("typeRemoved").className = "teslaButton";
+            } else if (cameraType == 1) {
+                document.getElementById("typeRedlight").className = "teslaButton";
+                document.getElementById("typeSpeed").className = teslaButtonSelected;
+                document.getElementById("typeRemoved").className = "teslaButton";
+            } else {
+                document.getElementById("typeRedlight").className = "teslaButton";
+                document.getElementById("typeSpeed").className = "teslaButton";
+                document.getElementById("typeRemoved").className = teslaButtonSelected;
+            }
+        }
+
+        function ClickOptionsPage() {
+            document.getElementById("groupOptions").style.display = "inherit";
+            document.getElementById("groupAlerts").style.display = "none";
+            document.getElementById("groupCameras").style.display = "none";
+            document.getElementById("groupReportCameras").style.display = "none";
+
+            document.getElementById("tabAlerts").className = "optionsTab";
+            document.getElementById("tabCameras").className = "optionsTab";
+
+            var className = "optionsTab optionsTabSelected";
+            if (isNightMode) {
+                className += " optionsTabSelectedNight";
+            }
+            document.getElementById("tabOptions").className = className;
+        }
+
+        function ClickAlertsPage() {
+            document.getElementById("groupOptions").style.display = "none";
+            document.getElementById("groupAlerts").style.display = "inherit";
+            document.getElementById("groupCameras").style.display = "none";
+            document.getElementById("groupReportCameras").style.display = "none";
+
+            document.getElementById("tabOptions").className = "optionsTab";
+            document.getElementById("tabCameras").className = "optionsTab";
+
+            var className = "optionsTab optionsTabSelected";
+            if (isNightMode) {
+                className += " optionsTabSelectedNight";
+            }
+            document.getElementById("tabAlerts").className = className;
+        }
+
+        function ClickCamerasPage() {
+            document.getElementById("groupOptions").style.display = "none";
+            document.getElementById("groupAlerts").style.display = "none";
+            document.getElementById("groupCameras").style.display = "inherit";
+            document.getElementById("groupReportCameras").style.display = "none";
+
+            document.getElementById("tabOptions").className = "optionsTab";
+            document.getElementById("tabAlerts").className = "optionsTab";
+
+            var className = "optionsTab optionsTabSelected";
+            if (isNightMode) {
+                className += " optionsTabSelectedNight";
+            }
+            document.getElementById("tabCameras").className = className;
+        }
+        
+        function ReportCamera() {
+            cameraType = 0;
+
+            document.getElementById("groupOptions").style.display = "none";
+            document.getElementById("groupAlerts").style.display = "none";
+            document.getElementById("groupCameras").style.display = "none";
+            document.getElementById("groupReportCameras").style.display = "inherit";
+
+            document.getElementById("groupRedlightSubmit").style.display = "inherit";
+            document.getElementById("sendingStatus").style.display = "none";
+
+            var mapOptions = {
+                center: carPosition,
+                mapTypeControl: false,
+                zoomControl: true,
+                panControl: false,
+                streetViewControl: false,
+                minZoom: 13,
+                maxZoom: 18,
+                zoom: 17
+            }
+
+            var mapCanvas = document.getElementById('mapCanvasCamera');
+            gMap = new google.maps.Map(mapCanvas, mapOptions);
+            gMap.setClickableIcons(false);
+
+            marker = new google.maps.Marker({
+                icon: {
+                    'url': 'icons/map-marker-red.png',
+                    'scaledSize': new google.maps.Size(40, 64),
+                    'origin': new google.maps.Point(0, 0),
+                    'anchor': new google.maps.Point(20, 64)
+                },
+                position: carPosition,
+                map: gMap,
+                draggable: true,
+            });
+            marker.position_changed = MarkerPositionChanged;
+            MarkerPositionChanged();
+
+            // add the known cameras to the map
+            var gPoiLayer = new google.maps.Data();
+            gPoiLayer.setStyle(function (feature) {
+                return {
+                    icon: {
+                        'url': 'icons/camera.png',
+                        'scaledSize': new google.maps.Size(30, 30),
+                        'origin': new google.maps.Point(0, 0),
+                        'anchor': new google.maps.Point(15, 15)
+                    },
+                    zIndex: 1,
+                    clickable: false,
+                    draggable: false
+                };
+            });
+
+            gPoiLayer.loadGeoJson(cameraPOI);
+            gPoiLayer.setMap(gMap);
+        }
+
+        function SubmitCameraReport() {
+          
+            document.getElementById("groupRedlightSubmit").style.display = "none";
+            document.getElementById("sendingStatus").style.display = "inherit";
+            document.getElementById("sendResult").innerText = "";
+
+            setTimeout(function() { 
+
+                var date = new Date();
+
+                var cameraTypeString = "";
+                if (cameraType == 0) {
+                    cameraTypeString = "redlight";
+                } else if (cameraType == 1) {
+                    cameraTypeString = "speed";
+                } else if (cameraType == 2) {
+                    cameraTypeString = "removed";
+                }  
+
+                var params = {
+                    'reportType': "camera",
+                    'dateTime': date.getTime(),
+                    'cameraType': cameraTypeString,
+                    'lat': carPosition.lat().toFixed(6),
+                    'lng': carPosition.lng().toFixed(6),
+                    'notes': document.getElementById("cameraNotesID").value
+                };
+
+                $.post("SubmitCameraReport.ashx", JSON.stringify(params))
+                    .done(function (data) {
+                        document.getElementById("sendProgress").src = "icons/loading_bar_stop.gif";
+
+                        if (data.indexOf("Success!")) {
+                            document.getElementById("sendResult").innerText = "Success!";
+                        } else {
+                            document.getElementById("sendResult").innerText = "Failed!";
+                        }
+                    })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    document.getElementById("sendProgress").src = "icons/loading_bar_stop.gif";
+                    document.getElementById("sendResult").innerText = "Failed!";
+                });
+
+            }, 1000);
+        }
+    </script>
+
+    <table style="border-spacing:0px">
+        <tr>
+            <td valign="top" style="border: 0px none red;font-size:19px;padding:0px">
+                <div id="tabOptions" class="optionsTab optionsTabSelected" style="" onclick="ClickOptionsPage()">Options</div>
+                <div id="tabSeperator1" class="optionsTabSeperator" style=""></div>
+                <div id="tabAlerts" class="optionsTab" style="" onclick="ClickAlertsPage()">Alerts</div>
+                <div id="tabSeperator2" class="optionsTabSeperator" style=""></div>
+                <div id="tabCameras" class="optionsTab" style="" onclick="ClickCamerasPage()">Cameras</div>
+            </td>
+            
+            <td style="border: 0px none red;padding:0px">
+                <div id="group" class="teslaGroup" style="width:855px;height:478px">
+                    <div id="groupOptions" style="display:inherit">
+                        DEFAULT ZOOM <br>
+                        <div id="groupZoom" class="teslaButtonArea" style="width:860px;display:inherit">
+                            <div id="ZoomDiv0" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(0)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>MIN</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv1" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(1)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>1</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv2" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(2)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>2</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv3" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(3)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>3</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv4" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(4)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>4</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv5" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(5)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>5</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv6" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(6)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>6</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv7" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(7)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>7</td></tr>
+                                </table>
+                            </div>
+                            <div id="ZoomDiv8" class="teslaButton teslaZoomButton " style="" onclick="SetZoom(8)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>MAX</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br><br>DISPLAY MODES<br>
+                        <div id="groupDisplayMode" class="teslaButtonArea" style="width:448px">
+                            <div id="DisplayAutoDiv" class="teslaButton" style="width:145px; height:56px; padding-top:3px; padding-left:5px; padding-right:10px;" onclick="SetDisplayMode(0)">
+                                <img id="DisplayAutoImg" src="icons/sunmoon_w.png" style="vertical-align: middle;width:64px;height:53px" />
+                                <span style="vertical-align: middle">AUTO</span>
+                            </div>
+
+                            <div id="DisplayDayDiv" class="teslaButton" style="height:56px; padding-top:3px; padding-left:10px; padding-right:0px; margin-left:-5px" onclick="SetDisplayMode(1)">
+                                <img id="DisplayDayImg" src="icons/sun_g.png" style="vertical-align: middle; margin-left:-10px; margin-right:-15px;width:64px;height:53px" />
+                                <span style="vertical-align: middle">DAY</span>
+                            </div>
+
+                            <div id="DisplayNightDiv" class="teslaButton" style="height:56px; padding-top:3px; padding-left:10px; padding-right:0px; margin-left:-5px" onclick="SetDisplayMode(2)">
+                                <img id="DisplayNightImg" src="icons/moon_g.png" style="vertical-align: middle; margin-left:-10px; margin-right:-20px;width:64px;height:53px" />
+                                <span style="vertical-align: middle">NIGHT</span>
+                            </div>
+                        </div>
+
+                        <table>
+                            <tr>
+                                <td style="width:520px;">
+                                    <br><br>STREET TRAFFIC<br>
+                                    <div id="groupTraffic" class="teslaButtonArea" style="">
+                                        <div id="TrafficOffDiv" class="teslaButton" style="" onclick="SetTrafficMode(0)">
+                                            <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                <tr><td>OFF</td></tr>
+                                            </table>
+                                        </div>
+                                        <div id="TrafficOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="SetTrafficMode(1)">
+                                            <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                <tr><td>ON</td></tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:92px;">
+                                    <br><br>TRAFFIC JAMS<br>
+                                    <div id="groupTrafficJams" class="teslaButtonArea" style="">
+                                        <div id="TrafficJamOffDiv" class="teslaButton" style="" onclick="SetTrafficJamMode(0)">
+                                            <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                <tr><td>OFF</td></tr>
+                                            </table>
+                                        </div>
+                                        <div id="TrafficJamOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="SetTrafficJamMode(1)">
+                                            <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                <tr><td>ON</td></tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- alert group -->
+                    <div id="groupAlerts" style="display:none">
+                        <table>
+                            <tr>
+                                <td style="border: 1px none white; width:492px; height:92px">
+                                    ACCIDENTS <br>
+                                    <table>
+                                        <tr>
+                                            <td style="border: 1px none white; width:92px; height:92px">
+                                                <img src="icons/accident.png" style="margin-left:7px" />
+                                            </td>
+                                            <td style="border: 1px none white;">
+                                                <div id="groupAlertAccidents" class="teslaButtonArea" style="">
+                                                    <div id="AccidentsOffDiv" class="teslaButton teslaButtonSelected" style="" onclick="alertAccident = false; SetAlertButton('Accidents', alertAccident)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>OFF</td></tr>
+                                                        </table>
+                                                    </div>
+                                                    <div id="AccidentsOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="alertAccident = true; SetAlertButton('Accidents', alertAccident)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>ON</td></tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="border: 1px none white; width:92px; height:92px">
+                                    HAZZARDS <br>
+                                    <table>
+                                        <tr>
+                                            <td style="border: 1px none white; width:92px; height:92px">
+                                                <img src="icons/hazzard.png" style="" />
+                                            </td>
+                                            <td style="border: 1px none white;">
+                                                <div id="groupAlertHazzards" class="teslaButtonArea" style="">
+                                                    <div id="HazzardsOffDiv" class="teslaButton teslaButtonSelected" style="" onclick="alertHazzard = false; SetAlertButton('Hazzards', alertHazzard)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>OFF</td></tr>
+                                                        </table>
+                                                    </div>
+                                                    <div id="HazzardsOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="alertHazzard = true; SetAlertButton('Hazzards', alertHazzard)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>ON</td></tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px none white; width:92px; height:92px">
+                                    <br> ROAD CLOSURES <br>
+                                    <table>
+                                        <tr>
+                                            <td style="border: 1px none white; width:92px; height:92px">
+                                                <img src="icons/closed.png" />
+                                            </td>
+                                            <td style="border: 1px none white;">
+                                                <div id="groupAlertClosures" class="teslaButtonArea" style="">
+                                                    <div id="ClosuresOffDiv" class="teslaButton teslaButtonSelected" style="" onclick="alertClosed = false; SetAlertButton('Closures', alertClosed)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>OFF</td></tr>
+                                                        </table>
+                                                    </div>
+                                                    <div id="ClosuresOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="alertClosed = true; SetAlertButton('Closures', alertClosed)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>ON</td></tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="border: 1px none white; width:92px; height:92px">
+                                    <br> POLICE <br>
+                                    <table>
+                                        <tr>
+                                            <td style="border: 1px none white; width:92px; height:92px">
+                                                <img src="icons/police.png" style="" />
+                                            </td>
+                                            <td style="border: 1px none white;">
+                                                <div id="groupAlertPolice" class="teslaButtonArea" style="">
+                                                    <div id="PoliceOffDiv" class="teslaButton teslaButtonSelected" style="" onclick="alertPolice = false; SetAlertButton('Police', alertPolice)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>OFF</td></tr>
+                                                        </table>
+                                                    </div>
+                                                    <div id="PoliceOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="alertPolice = true; SetAlertButton('Police', alertPolice)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>ON</td></tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px none white; width:92px; height:92px">
+                                    <br> CONSTRUCTION <br>
+                                    <table>
+                                        <tr>
+                                            <td style="border: 1px none white; width:92px; height:92px">
+                                                <img src="icons/construction.png" />
+                                            </td>
+                                            <td style="border: 1px none white;">
+                                                <div id="groupAlertConstruction" class="teslaButtonArea" style="">
+                                                    <div id="ConstructionOffDiv" class="teslaButton teslaButtonSelected" style="" onclick="alertConstruction = false; SetAlertButton('Construction', alertConstruction)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>OFF</td></tr>
+                                                        </table>
+                                                    </div>
+                                                    <div id="ConstructionOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="alertConstruction = true; SetAlertButton('Construction', alertConstruction)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>ON</td></tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="border: 1px none white; width:92px; height:92px">
+                                    <br> POLICE HIDING<br>
+                                    <table>
+                                        <tr>
+                                            <td style="border: 1px none white; width:92px; height:92px">
+                                                <img src="icons/police_hiding.png" style="width:96px;padding-top:0px" />
+                                            </td>
+                                            <td style="border: 1px none white;">
+                                                <div id="groupAlertPoliceHiding" class="teslaButtonArea" style="">
+                                                    <div id="PoliceHidingOffDiv" class="teslaButton teslaButtonSelected" style="" onclick="alertPoliceHiding = false; SetAlertButton('PoliceHiding', alertPoliceHiding)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>OFF</td></tr>
+                                                        </table>
+                                                    </div>
+                                                    <div id="PoliceHidingOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="alertPoliceHiding = true; SetAlertButton('PoliceHiding', alertPoliceHiding)">
+                                                        <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                            <tr><td>ON</td></tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- cameras group -->
+                    <div id="groupCameras" style="display:none">
+                        REDLIGHT WARNING<br>
+                        <div id="groupRedlight" class="teslaButtonArea" style="">
+                            <div id="RedlightWarnOffDiv" class="teslaButton" style="" onclick="SetRedlightWarn(0)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>OFF</td></tr>
+                                </table>
+                            </div>
+                            <div id="RedlightWarnOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="SetRedlightWarn(1)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>ON</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br>SPEED WARNING<br>
+                        <div id="groupRedlight" class="teslaButtonArea" style="">
+                            <div id="SpeedWarnOffDiv" class="teslaButton" style="" onclick="SpeedWarnMode(0)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>OFF</td></tr>
+                                </table>
+                            </div>
+                            <div id="SpeedWarnOnDiv" class="teslaButton" style="margin-left:-7px;" onclick="SpeedWarnMode(1)">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>ON</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br><br>UPDATE CAMERA LOCATION<br>
+                        <div id="groupRedlight" class="teslaButtonArea" style="width:155px">
+                            <div id="reportCameraDiv" class="teslaButton teslaButtonSelected" style="width:155px" onclick="ReportCamera()">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>REPORT</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- report cameras group -->
+                    <div id="groupReportCameras" style="display:none;margin-top:-15px">
+                        <table style="">
+                            <tbody style="vertical-align:top">
+                                <tr style="height:400px">
+                                    <td>
+                                        MAP
+                                        <div style='display:block;margin-right:10px;margin-top:0px;font-family:sans-serif;font-size:14px;font-style:italic;float:right;color:#707070'>
+                                            <img src='icons/info.png' width="18" style='vertical-align:sub'> drag marker to set camera location
+                                        </div>
+                                        <br>
+                                        <div id="mapCanvasCamera" style="width:400px;height:350px"></div>
+                                    </td>
+                                    <td style="padding-left:30px">
+                                        TYPE <br>
+                                        <div id="groupRedlightType" class="teslaButtonArea" style="width:397px">
+                                            <div id="typeRedlight" class="teslaButton teslaButtonSelected" style="" onclick="SetCameraType(0)">
+                                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                    <tr><td>REDLIGHT</td></tr>
+                                                </table>
+                                            </div>
+                                            <div id="typeSpeed" class="teslaButton " style="margin-left:-7px;" onclick="SetCameraType(1)">
+                                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                    <tr><td>SPEED</td></tr>
+                                                </table>
+                                            </div>
+                                            <div id="typeRemoved" class="teslaButton " style="margin-left:-7px;" onclick="SetCameraType(2)">
+                                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                                    <tr><td>REMOVED</td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <br>LOCATION <br>
+                                        <span id="reportLocation" style="font-size:14px"></span>
+                                        <br><br>ADDRESS <br>
+                                        <span id="reportAddress" style="font-size:14px"></span>
+                                        <br><br>NOTES <br>
+                                        <textarea id="cameraNotesID" name="cameraNotes" style="width:400px;height:60px;resize:none"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="submitSeperator" class="submitSeperator" style="width:919px;height:3px;margin-left:-32px"></div>
+                        <div id="groupRedlightSubmit" class="teslaButtonArea" style="width:300px;margin-left:33%;margin-top:13px;display:inherit">
+                            <div id="redlightSubmitDiv" class="teslaButton teslaButtonSelected" style="width:300px;" onclick="SubmitCameraReport()">
+                                <table style="width:100%; height:100%; text-align:center; vertical-align:central">
+                                    <tr><td>SUBMIT REPORT</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="sendingStatus" style="display:none">
+                            <div style="margin-left:-21px;margin-top:11px">
+                                <img id="sendProgress" src="icons/loading_bar.gif" style="width:186px;height:24px"/>
+                                <img id="sendProgress" src="icons/loading_bar_stop.gif" style="display:none;width:186px;height:24px" />
+                            </div>
+                            <span>Sending...</span><span id="sendResult"></span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+    <script type="text/javascript">
+
+        // init page
+        SetAlertButton("Accidents", alertAccident);
+        SetAlertButton("Hazzards", alertHazzard);
+        SetAlertButton("Closures", alertClosed);
+        SetAlertButton("Construction", alertConstruction);
+        SetAlertButton("Police", alertPolice);
+        SetAlertButton("PoliceHiding", alertPoliceHiding);
+
+        SetDisplayMode(displayMode);
+        SetTrafficMode(trafficMode);
+        SetTrafficJamMode(trafficJamMode);
+        SetZoom(zoom);
+
+        SetRedlightWarn(warnRedlightCamera);
+        SpeedWarnMode(warnSpeedCamera);
+
+        if (isNightMode) {
+            //document.body.style.color = "#FFFFFF";
+            document.getElementById("group").className += " teslaGroupNight";
+
+            var divs = document.getElementsByTagName('div');
+            for (index = 0; index < divs.length; ++index) {
+                if (divs[index].className == "teslaButtonArea") {
+                    divs[index].className += " teslaButtonAreaNight";
+                }
+            }
+
+            document.getElementById("tabSeperator1").className += " optionsTabSeperatorNight";
+            document.getElementById("tabSeperator2").className += " optionsTabSeperatorNight";            
+            document.getElementById("submitSeperator").className = " optionsDialogNight";
+            document.getElementById("cameraNotesID").className = "cameraNotesNight";
+        }
+
+        ClickOptionsPage();
+
+    </script>
+
+</body>
+</html>
+

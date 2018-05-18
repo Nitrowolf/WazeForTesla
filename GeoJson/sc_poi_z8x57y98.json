@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-99.319142,38.900543]}, "properties": { "name": "Hays, KS", "dateOpened": "2014-06-12", "elevationMeters": "626", "locationId": "hayssupercharger", "stallCount": "6"}}]}

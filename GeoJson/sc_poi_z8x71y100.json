@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-79.511211,36.07079]}, "properties": { "name": "Burlington, NC", "dateOpened": "2013-10-16", "elevationMeters": "197", "locationId": "burlingtonncsupercharger", "stallCount": "8"}}]}

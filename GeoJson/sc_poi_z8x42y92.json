@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-121.308473,44.03563]}, "properties": { "name": "Bend, OR", "dateOpened": "2016-06-17", "elevationMeters": "1142", "locationId": "bendoregonsupercharger", "stallCount": "8"}}]}

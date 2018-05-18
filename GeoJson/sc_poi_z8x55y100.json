@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-101.931478,35.189035]}, "properties": { "name": "Amarillo, TX", "dateOpened": "2015-11-05", "elevationMeters": "1134", "locationId": "amarillosupercharger", "stallCount": "8"}}]}

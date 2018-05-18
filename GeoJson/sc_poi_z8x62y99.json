@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-91.801658,37.940064]}, "properties": { "name": "Rolla, MO", "dateOpened": "2016-09-27", "elevationMeters": "293", "locationId": "rollasupercharger", "stallCount": "8"}}]}

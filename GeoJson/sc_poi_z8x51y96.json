@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-107.340168,39.55268]}, "properties": { "name": "Glenwood Springs, CO", "dateOpened": "2013-09-17", "elevationMeters": "1762", "locationId": "glenwoodspringssupercharger", "stallCount": "6"}}]}

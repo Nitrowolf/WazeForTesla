@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-121.964913,36.976546]}, "properties": { "type": 1, "address":"Viga Ct / 42nd Ave"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-121.964941,36.978337]}, "properties": { "type": 1, "address":"41st Ave / Clares St"}}]}

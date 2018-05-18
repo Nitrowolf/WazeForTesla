@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-103.708604,39.2688421]}, "properties": { "name": "Limon, CO", "dateOpened": "2014-06-21", "elevationMeters": "1652", "locationId": "limonsupercharger", "stallCount": "6"}}]}

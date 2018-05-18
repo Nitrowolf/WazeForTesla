@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-112.083841,38.788161]}, "properties": { "name": "Richfield, UT", "dateOpened": "2014-04-04", "elevationMeters": "1659", "locationId": "richfieldsupercharger", "stallCount": "4"}}]}

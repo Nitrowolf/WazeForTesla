@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-104.585314,38.286144]}, "properties": { "type": 1, "address":"N Norwood Ave / US Hwy 50"}}]}

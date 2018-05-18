@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-71.710506,41.355419]}, "properties": { "type": 1, "address":"Post Rd / Beach Rd"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-71.703314,41.356836]}, "properties": { "type": 1, "address":"Post Rd / E Beach Rd"}}]}

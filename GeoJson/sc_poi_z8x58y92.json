@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-98.04449999999997,43.701129]}, "properties": { "name": "Mitchell, SD", "dateOpened": "2013-12-18", "elevationMeters": "410", "locationId": "mitchellsupercharger", "stallCount": "6"}}]}

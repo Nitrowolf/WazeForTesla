@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-97.10915,31.58224]}, "properties": { "name": "Waco, TX", "dateOpened": "2013-09-07", "elevationMeters": "124", "locationId": "wacosupercharger", "stallCount": "8"}}]}

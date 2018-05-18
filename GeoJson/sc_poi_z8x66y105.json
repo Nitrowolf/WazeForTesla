@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-86.116677,30.720702]}, "properties": { "name": "DeFuniak Springs, FL", "dateOpened": "2015-01-09", "elevationMeters": "76", "locationId": "defuniakspringssupercharger", "stallCount": "5"}}]}

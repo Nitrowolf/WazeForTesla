@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-123.91683,46.00101]}, "properties": { "name": "Seaside, OR", "dateOpened": "2016-07-01", "elevationMeters": "5", "locationId": "seasideorupercharger", "stallCount": "8"}}]}

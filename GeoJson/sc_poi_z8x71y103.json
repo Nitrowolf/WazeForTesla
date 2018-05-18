@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-80.475763,33.485858]}, "properties": { "name": "Santee, SC", "dateOpened": "2013-12-27", "elevationMeters": "39", "locationId": "santeesupercharger", "stallCount": "6"}}]}

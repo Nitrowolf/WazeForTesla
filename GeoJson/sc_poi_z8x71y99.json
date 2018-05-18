@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-79.419007,37.796979]}, "properties": { "name": "Lexington, VA", "dateOpened": "2015-12-16", "elevationMeters": "319", "locationId": "lexingtonvasupercharger", "stallCount": "6"}}]}

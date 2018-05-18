@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-68.73432,44.775909]}, "properties": { "name": "Brewer, ME", "dateOpened": "2016-09-02", "elevationMeters": "43", "locationId": "brewersupercharger", "stallCount": "8"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-83.339477,33.925468]}, "properties": { "type": 1, "address":"Barnett Shoals Rd / Greencrest Dr"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-83.409662,33.949764]}, "properties": { "type": 1, "address":"W Broad St / Hawthorne Ave"}}]}

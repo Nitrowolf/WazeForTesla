@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-113.814659,52.251899]}, "properties": { "name": "Red Deer, AB", "dateOpened": "2015-01-22", "elevationMeters": "878", "locationId": "reddeersupercharger", "stallCount": "4"}}]}

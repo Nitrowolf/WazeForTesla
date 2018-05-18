@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-101.725171,39.326253]}, "properties": { "name": "Goodland, KS", "dateOpened": "2014-06-13", "elevationMeters": "1129", "locationId": "goodlandsupercharger", "stallCount": "6"}}]}

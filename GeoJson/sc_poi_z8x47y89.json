@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-114.031824,46.912545]}, "properties": { "name": "Missoula, MT", "dateOpened": "2014-10-29", "elevationMeters": "1009", "locationId": "missoulasupercharger", "stallCount": "6"}}]}

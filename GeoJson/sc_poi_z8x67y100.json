@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-85.196339,35.037458]}, "properties": { "name": "Chattanooga, TN", "dateOpened": "2014-09-04", "elevationMeters": "204", "locationId": "chattanoogasupercharger", "stallCount": "6"}}]}

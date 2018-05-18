@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-100.392455,32.450591]}, "properties": { "name": "Sweetwater, TX", "dateOpened": "2016-08-19", "elevationMeters": "660", "locationId": "sweetwatersupercharger", "stallCount": "8"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-82.428935,42.998817]}, "properties": { "name": "Port Huron, MI", "dateOpened": "2016-08-18", "elevationMeters": "182", "locationId": "porthuronsupercharger", "stallCount": "8"}}]}

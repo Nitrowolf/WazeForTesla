@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-114.888901,47.192149]}, "properties": { "name": "Superior, MT", "dateOpened": "2014-12-05", "elevationMeters": "835", "locationId": "superiorsupercharger", "stallCount": "4"}}]}

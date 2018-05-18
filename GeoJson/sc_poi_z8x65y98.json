@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-88.563736,39.137048]}, "properties": { "name": "Effingham, IL", "dateOpened": "2015-03-28", "elevationMeters": "184", "locationId": "effinghamilsupercharger", "stallCount": "6"}}]}

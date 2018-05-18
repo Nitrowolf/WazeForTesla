@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-108.604325,39.090758]}, "properties": { "name": "Grand Junction, CO", "dateOpened": "2014-01-10", "elevationMeters": "1386", "locationId": "grandjunctionsupercharger", "stallCount": "6"}}]}

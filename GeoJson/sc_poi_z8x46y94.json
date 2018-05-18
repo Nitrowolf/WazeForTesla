@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-114.456183,42.598103]}, "properties": { "name": "Twin Falls, ID", "dateOpened": "2015-10-28", "elevationMeters": "1101", "locationId": "twinfallssupercharger", "stallCount": "8"}}]}

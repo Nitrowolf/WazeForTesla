@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-110.831701,39.600731]}, "properties": { "name": "Price, UT", "dateOpened": "2015-10-16", "elevationMeters": "1207", "locationId": "pricesupercharger", "stallCount": "8"}}]}

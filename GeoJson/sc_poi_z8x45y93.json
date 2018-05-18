@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-116.279015,43.591886]}, "properties": { "name": "Boise, ID", "dateOpened": "2015-08-07", "elevationMeters": "838", "locationId": "boisesupercharger", "stallCount": "8"}}]}

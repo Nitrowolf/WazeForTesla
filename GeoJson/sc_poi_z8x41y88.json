@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-122.338625,48.509772]}, "properties": { "name": "Burlington, WA", "dateOpened": "2013-07-13", "elevationMeters": "7", "locationId": "burlingtonsupercharger", "stallCount": "8"}}]}

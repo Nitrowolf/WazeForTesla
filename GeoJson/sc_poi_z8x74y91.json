@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-74.747845,45.023665]}, "properties": { "name": "Cornwall, ON", "dateOpened": "2014-08-28", "elevationMeters": "431", "locationId": "cornwallsupercharger", "stallCount": "6"}}]}

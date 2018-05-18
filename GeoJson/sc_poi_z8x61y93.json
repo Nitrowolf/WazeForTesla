@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-93.357721,43.68606]}, "properties": { "name": "Albert Lea, MN", "dateOpened": "2014-01-15", "elevationMeters": "383", "locationId": "albertleasupercharger", "stallCount": "4"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-72.51942,45.899084]}, "properties": { "name": "Drummondville, QC", "dateOpened": "2015-04-08", "elevationMeters": "84", "locationId": "drummondvilleqcsupercharger", "stallCount": "8"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-122.797436,53.910276]}, "properties": { "type": 1, "address":"15 Avenue / Ospika Boulevard"}}]}

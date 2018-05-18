@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-85.403096,44.282551]}, "properties": { "name": "Cadillac, MI", "dateOpened": "2015-12-23", "elevationMeters": "393", "locationId": "cadillacsupercharger", "stallCount": "8"}}]}

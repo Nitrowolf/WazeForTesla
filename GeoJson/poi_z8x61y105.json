@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-94.780761,31.192221]}, "properties": { "type": 1, "address":"Lumberjack Dr / N Temple Dr"}}]}

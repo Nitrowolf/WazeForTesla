@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-96.978988,28.766853]}, "properties": { "name": "Victoria, TX", "dateOpened": "2015-12-30", "elevationMeters": "23", "locationId": "victoriasupercharger", "stallCount": "6"}}]}

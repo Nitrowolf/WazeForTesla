@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-123.826086,46.970064]}, "properties": { "type": 1, "address":"W Wishkah St / S Park St"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-123.037471,44.082605]}, "properties": { "name": "Springfield, OR", "dateOpened": "2013-11-02", "elevationMeters": "133", "locationId": "springfieldsupercharger", "stallCount": "8"}}]}

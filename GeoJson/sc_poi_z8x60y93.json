@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-95.595647,43.63385]}, "properties": { "name": "Worthington, MN", "dateOpened": "2013-12-11", "elevationMeters": "478", "locationId": "worthingtonsupercharger", "stallCount": "6"}}]}

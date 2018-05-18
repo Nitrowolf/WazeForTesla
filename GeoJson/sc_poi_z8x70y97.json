@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-80.602874,40.060757]}, "properties": { "name": "Triadelphia, WV", "dateOpened": "2014-05-07", "elevationMeters": "397", "locationId": "triadelphiasupercharger", "stallCount": "4"}}]}

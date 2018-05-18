@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-90.151048,32.274159]}, "properties": { "name": "Pearl, MS", "dateOpened": "2016-03-31", "elevationMeters": "79", "locationId": "pearlsupercharger", "stallCount": "8"}}]}

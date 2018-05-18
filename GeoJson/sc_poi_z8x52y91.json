@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-106.956363,44.804565]}, "properties": { "name": "Sheridan, WY", "dateOpened": "2015-07-15", "elevationMeters": "1136", "locationId": "sheridansupercharger", "stallCount": "4"}}]}

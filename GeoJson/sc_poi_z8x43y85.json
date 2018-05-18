@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-118.218857,51.009594]}, "properties": { "name": "Revelstoke, BC", "dateOpened": "2014-12-30", "elevationMeters": "451", "locationId": "revelstokesupercharger", "stallCount": "4"}}]}

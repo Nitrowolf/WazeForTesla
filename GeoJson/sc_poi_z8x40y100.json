@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-121.844014,36.616759]}, "properties": { "name": "Seaside, CA", "dateOpened": "2015-08-13", "elevationMeters": "10", "locationId": "montereyseaside", "stallCount": "6"}}]}

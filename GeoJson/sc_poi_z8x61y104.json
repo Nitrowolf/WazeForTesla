@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-92.446436,31.312424]}, "properties": { "name": "Alexandria, LA", "dateOpened": "2016-06-07", "elevationMeters": "23", "locationId": "alexandriasupercharger", "stallCount": "8"}}]}

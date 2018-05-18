@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-110.145558,34.922962]}, "properties": { "name": "Holbrook, AZ", "dateOpened": "2014-01-15", "elevationMeters": "1596", "locationId": "holbrooksupercharger", "stallCount": "4"}}]}

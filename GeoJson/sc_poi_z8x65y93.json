@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-87.747073,43.749912]}, "properties": { "name": "Sheboygan, WI", "dateOpened": "2015-10-07", "elevationMeters": "200", "locationId": "sheboygansupercharger", "stallCount": "8"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-122.977454,46.729732]}, "properties": { "name": "Centralia, WA", "dateOpened": "2013-07-17", "elevationMeters": "56", "locationId": "centraliasupercharger", "stallCount": "10"}}]}

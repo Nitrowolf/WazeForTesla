@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-117.232243,38.069801]}, "properties": { "name": "Tonopah, NV", "dateOpened": "2016-06-03", "elevationMeters": "1834", "locationId": "tonopahsupercharger", "stallCount": "8"}}]}

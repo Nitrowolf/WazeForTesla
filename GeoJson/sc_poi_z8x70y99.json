@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-81.054406,36.945795]}, "properties": { "name": "Wytheville, VA", "dateOpened": "2015-12-30", "elevationMeters": "683", "locationId": "wythevillesupercharger", "stallCount": "6"}}]}

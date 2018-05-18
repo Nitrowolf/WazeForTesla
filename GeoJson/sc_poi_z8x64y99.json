@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-89.533986,36.893583]}, "properties": { "name": "Miner, MO", "dateOpened": "2016-06-01", "elevationMeters": "94", "locationId": "minersupercharger", "stallCount": "8"}}]}

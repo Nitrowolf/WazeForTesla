@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-116.974152,51.31325]}, "properties": { "name": "Golden, BC", "dateOpened": "2015-02-04", "elevationMeters": "802", "locationId": "goldenbcsupercharger", "stallCount": "4"}}]}

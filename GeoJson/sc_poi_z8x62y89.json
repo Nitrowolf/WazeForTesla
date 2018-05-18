@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-92.10232,46.784467]}, "properties": { "name": "Duluth, MN", "dateOpened": "2015-07-17", "elevationMeters": "200", "locationId": "duluthsupercharger", "stallCount": "4"}}]}

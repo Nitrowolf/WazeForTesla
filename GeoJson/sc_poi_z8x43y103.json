@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-117.6632,33.498458]}, "properties": { "name": "San Juan Capistrano, CA", "dateOpened": "2014-05-06", "elevationMeters": "30", "locationId": "sanjuancapistranosupercharger", "stallCount": "7"}}]}

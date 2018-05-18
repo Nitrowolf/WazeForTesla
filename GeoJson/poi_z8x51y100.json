@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-106.69685,35.241621]}, "properties": { "type": 1, "address":"20th St SE / Southern Blvd SE"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-106.696836,35.27458]}, "properties": { "type": 1, "address":"Unser Blvd / Northern Blvd NE"}}]}

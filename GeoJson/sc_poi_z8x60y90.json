@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-94.256413,46.378868]}, "properties": { "name": "Baxter, MN", "dateOpened": "2015-10-21", "elevationMeters": "369", "locationId": "baxtersupercharger", "stallCount": "8"}}]}

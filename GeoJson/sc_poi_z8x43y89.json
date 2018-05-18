@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-118.368328,47.116294]}, "properties": { "name": "Ritzville, WA", "dateOpened": "2014-05-18", "elevationMeters": "570", "locationId": "ritzvillesupercharger", "stallCount": "4"}}]}

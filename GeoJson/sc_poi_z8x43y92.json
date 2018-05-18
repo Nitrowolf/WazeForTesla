@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-117.812422,44.782849]}, "properties": { "name": "Baker City, OR", "dateOpened": "2015-06-25", "elevationMeters": "1044", "locationId": "bakercitysupercharger", "stallCount": "8"}}]}

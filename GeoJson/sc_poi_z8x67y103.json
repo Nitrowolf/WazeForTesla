@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-85.4463143,32.6251847]}, "properties": { "name": "Auburn, AL", "dateOpened": "2014-12-23", "elevationMeters": "222", "locationId": "auburnalsupercharger", "stallCount": "6"}}]}

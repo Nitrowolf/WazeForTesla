@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-103.212569,44.105601]}, "properties": { "name": "Rapid City, SD", "dateOpened": "2013-11-25", "elevationMeters": "1006", "locationId": "rapidcitysupercharger", "stallCount": "4"}}]}

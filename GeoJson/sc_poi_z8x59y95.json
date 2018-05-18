@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-95.836123,41.220005]}, "properties": { "name": "Council Bluffs, IA", "dateOpened": "2015-03-11", "elevationMeters": "301", "locationId": "councilbluffsiasupercharger", "stallCount": "8"}}]}

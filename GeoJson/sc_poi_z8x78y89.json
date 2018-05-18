@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-69.558776,47.82017]}, "properties": { "name": "Rivière du Loup, QC", "dateOpened": "2016-09-22", "elevationMeters": "40", "locationId": "riviereduloupsupercharger", "stallCount": "8"}}]}

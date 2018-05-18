@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-81.051135,24.725172]}, "properties": { "name": "Marathon, FL", "dateOpened": "2015-05-02", "elevationMeters": "1", "locationId": "marathonsupercharger", "stallCount": "4"}}]}

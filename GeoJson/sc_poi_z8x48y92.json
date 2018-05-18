@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-111.099022,44.656089]}, "properties": { "name": "West Yellowstone, MT", "dateOpened": "2016-05-25", "elevationMeters": "2034", "locationId": "westyellowstonesupercharger", "stallCount": "8"}}]}

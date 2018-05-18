@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-93.248171,30.200741]}, "properties": { "name": "Lake Charles, LA", "dateOpened": "2014-12-21", "elevationMeters": "3", "locationId": "lakecharlessupercharger", "stallCount": "6"}}]}

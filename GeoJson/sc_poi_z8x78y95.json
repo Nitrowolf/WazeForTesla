@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-70.540271,41.781242]}, "properties": { "name": "Sagamore, MA", "dateOpened": "2014-10-27", "elevationMeters": "26", "locationId": "sagamorebeachsupercharger", "stallCount": "8"}}]}

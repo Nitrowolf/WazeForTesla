@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-93.75437,32.478594]}, "properties": { "name": "Shreveport, LA", "dateOpened": "2016-05-12", "elevationMeters": "59", "locationId": "shreveportsupercharger", "stallCount": "8"}}]}

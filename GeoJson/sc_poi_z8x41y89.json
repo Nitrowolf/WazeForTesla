@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-120.54162,46.976918]}, "properties": { "name": "Ellensburg, WA", "dateOpened": "2013-12-23", "elevationMeters": "454", "locationId": "ellensburgsupercharger", "stallCount": "5"}}]}

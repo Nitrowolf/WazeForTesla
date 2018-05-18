@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-89.67119,39.748868]}, "properties": { "name": "Springfield, IL", "dateOpened": "2015-01-09", "elevationMeters": "184", "locationId": "springfieldilsupercharger", "stallCount": "8"}}]}

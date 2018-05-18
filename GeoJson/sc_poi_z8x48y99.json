@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-111.468041,36.924902]}, "properties": { "name": "Page, AZ", "dateOpened": "2016-09-10", "elevationMeters": "1239", "locationId": "pagearizonasupercharger", "stallCount": "8"}}]}

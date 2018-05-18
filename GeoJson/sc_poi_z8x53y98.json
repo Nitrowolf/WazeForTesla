@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-104.824907,38.837573]}, "properties": { "name": "Colorado Springs, CO", "dateOpened": "2015-12-29", "elevationMeters": "1835", "locationId": "coloradospringssupercharger", "stallCount": "8"}}]}

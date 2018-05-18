@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-119.429273,49.885795]}, "properties": { "name": "Kelowna, BC", "dateOpened": "2015-12-30", "elevationMeters": "376", "locationId": "kelownasupercharger", "stallCount": "8"}}]}

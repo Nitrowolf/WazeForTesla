@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-85.673087,38.211846]}, "properties": { "name": "Louisville, KY", "dateOpened": "2015-12-30", "elevationMeters": "151", "locationId": "louisvillesupercharger", "stallCount": "8"}}]}

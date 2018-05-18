@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-83.063448,39.877253]}, "properties": { "name": "Grove City, OH", "dateOpened": "2015-01-16", "elevationMeters": "243", "locationId": "grovecityohsupercharger", "stallCount": "8"}}]}

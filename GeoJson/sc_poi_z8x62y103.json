@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-92.056057,32.496251]}, "properties": { "name": "Monroe, LA", "dateOpened": "2016-09-16", "elevationMeters": "21", "locationId": "monroesupercharger", "stallCount": "8"}}]}

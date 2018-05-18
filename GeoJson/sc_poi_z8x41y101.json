@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-120.66633,35.48656]}, "properties": { "name": "Atascadero, CA", "dateOpened": "2013-07-03", "elevationMeters": "262", "locationId": "atascaderosupercharger", "stallCount": "8"}}]}

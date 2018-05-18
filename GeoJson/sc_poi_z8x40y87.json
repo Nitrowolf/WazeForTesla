@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-123.134573,49.736901]}, "properties": { "name": "Squamish, BC", "dateOpened": "2014-07-12", "elevationMeters": "35", "locationId": "squamishsupercharger", "stallCount": "6"}}]}

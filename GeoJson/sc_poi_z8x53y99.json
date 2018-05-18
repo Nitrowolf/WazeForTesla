@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-104.519962,37.134228]}, "properties": { "name": "Trinidad, CO", "dateOpened": "2015-07-30", "elevationMeters": "1933", "locationId": "trinidadsupercharger", "stallCount": "6"}}]}

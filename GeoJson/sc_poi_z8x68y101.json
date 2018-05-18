@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-82.604487,35.531391]}, "properties": { "name": "Asheville, NC", "dateOpened": "2015-12-16", "elevationMeters": "662", "locationId": "ashevillesupercharger", "stallCount": "8"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-104.804955,41.161085]}, "properties": { "name": "Cheyenne, WY", "dateOpened": "2014-01-20", "elevationMeters": "1859", "locationId": "cheyennesupercharger", "stallCount": "4"}}]}

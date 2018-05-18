@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-104.45267,42.75625]}, "properties": { "name": "Lusk, WY", "dateOpened": "2013-12-19", "elevationMeters": "1529", "locationId": "lusksupercharger", "stallCount": "4"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-86.804641,35.969209]}, "properties": { "name": "Nashville, TN", "dateOpened": "2015-07-08", "elevationMeters": "226", "locationId": "brentwood", "stallCount": "6"}}]}

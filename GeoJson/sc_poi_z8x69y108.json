@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-81.787136,26.48564]}, "properties": { "name": "Fort Myers, FL", "dateOpened": "2013-07-25", "elevationMeters": "6", "locationId": "fortmyerssupercharger", "stallCount": "8"}}]}

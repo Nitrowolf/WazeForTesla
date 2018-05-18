@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-123.20787,39.148694]}, "properties": { "name": "Ukiah, CA", "dateOpened": "2016-01-13", "elevationMeters": "193", "locationId": "ukiahsupercharger", "stallCount": "8"}}]}

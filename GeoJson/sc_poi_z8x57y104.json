@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-99.007197,32.374263]}, "properties": { "name": "Cisco, TX", "dateOpened": "2016-08-19", "elevationMeters": "513", "locationId": "ciscotexassupercharger", "stallCount": "8"}}]}

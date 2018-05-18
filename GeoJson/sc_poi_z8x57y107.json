@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-98.185829,28.521614]}, "properties": { "name": "Three Rivers, TX", "dateOpened": "2016-09-30", "elevationMeters": "51", "locationId": "threeriverssupercharger", "stallCount": "8"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-79.206703,45.333611]}, "properties": { "name": "Huntsville, ON", "dateOpened": "2016-09-30", "elevationMeters": "300", "locationId": "huntsvillesontarioupercharger", "stallCount": "9"}}]}

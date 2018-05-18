@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-115.359179,51.100208]}, "properties": { "name": "Canmore, AB", "dateOpened": "2015-03-11", "elevationMeters": "1320", "locationId": "canmoreabsupercharger", "stallCount": "4"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-119.794179,39.489732]}, "properties": { "name": "Reno, NV", "dateOpened": "2016-05-05", "elevationMeters": "1356", "locationId": "renosupercharger", "stallCount": "6"}}]}

@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-80.766023,35.341213]}, "properties": { "name": "Charlotte, NC", "dateOpened": "2015-02-25", "elevationMeters": "232", "locationId": "charlottencsupercharger", "stallCount": "8"}}]}

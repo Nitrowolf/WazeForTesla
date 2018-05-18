@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-83.530172,41.655015]}, "properties": { "type": 1, "address":"N Summit St / Cherry St"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-83.523477,41.648546]}, "properties": { "type": 1, "address":"Front St / Main St"}}]}

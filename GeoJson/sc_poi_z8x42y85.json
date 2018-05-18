@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-120.368302,50.655233]}, "properties": { "name": "Kamloops, BC", "dateOpened": "2014-12-23", "elevationMeters": "616", "locationId": "kamloopssupercharger", "stallCount": "4"}}]}

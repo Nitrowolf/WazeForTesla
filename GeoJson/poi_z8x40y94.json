@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-122.872773,42.341146]}, "properties": { "type": 1, "address":"Biddle Rd / E McAndrews Rd"}},{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-122.858056,42.315758]}, "properties": { "type": 1, "address":"E Barnett Rd / E Stewart Ave"}}]}

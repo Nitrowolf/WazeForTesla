@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-79.002343,34.667629]}, "properties": { "name": "Lumberton, NC", "dateOpened": "2014-01-17", "elevationMeters": "40", "locationId": "lumbertonsupercharger", "stallCount": "4"}}]}

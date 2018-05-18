@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-100.716887,43.886915]}, "properties": { "name": "Murdo, SD", "dateOpened": "2013-12-31", "elevationMeters": "691", "locationId": "murdosupercharger", "stallCount": "4"}}]}

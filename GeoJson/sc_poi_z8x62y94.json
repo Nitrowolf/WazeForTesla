@@ -1,0 +1,1 @@
+{ "type": "FeatureCollection", "features": [{"type": "Feature", "geometry": { "type": "Point", "coordinates": [-91.591467,41.680372]}, "properties": { "name": "Coralville, IA", "dateOpened": "2016-09-29", "elevationMeters": "205", "locationId": "coralvillesupercharger", "stallCount": "8"}}]}
